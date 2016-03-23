@@ -1,41 +1,59 @@
 /* Viren Mohindra
- * 
- */
+ *
+ * Construct a calling class and a Car class as follows:
+ * Car Class:
+ * Properties:  Make (String), Year(int), Color(String), Speed (int)
+ * Methods:
+ * •	All getter, setter methods
+ * •	Accelerate ( increase speed :  15MPH if year < 2010,  30 MPH >= 2010)
+ * •	Brake ( lower speed :   5MPH if year < 2010,  10 MPH >= 2010, speed always >=0)
+ * •	Stop (speed = 0)
+ * Create an array of 10 cars. Give them random colors and makes of your choice. Select a random year for a car, but when done,
+ * half the cars should have a year >=2010.  Initial Speed is zero.
+ * Do the following 100 times:
+ * •	Pick a random car
+ * •	Randomly select Brake, Accelerate or Stop method (equal probabilities)
+ * •	Invoke the selected method chosen for the car chosen
+ * After the loop, print out the car number, year, make, color and final speed.
+*/
 
 import java.util.Random;
 
 public class Car_Worksheet_Question1 {
 	
+	static int LIMIT = 100;
+	
 	public static void main(String[] args) {
-		
+	
 		Random r = new Random();
 		
 		// initialization of array of 10 objects from Car class
 		Car[] cars = new Car[10];
 		
-		// creation of 10 objects
-		cars[0] = new Car("Lamborghini", "Yellow", 2011, 0);
-		cars[1] = new Car("BMW", "Red", 2010, 0);
-		cars[2] = new Car("Bugatti", "Blue", 2014, 0);
-		cars[3] = new Car("Aston Martin", "Violet", 2015, 0);
-		cars[4] = new Car("Audi", "Indigo", 2012, 0);
-		cars[5] = new Car("Cadillac", "Green", 1999, 0);
-		cars[6] = new Car("Chevrolet", "Orange", 2000, 0);
-		cars[7] = new Car("Ferarri", "Red", 1960, 0);
-		cars[8] = new Car("Jaguar", "Purple", 2001, 0);
-		cars[9] = new Car("Hyundai", "Black", 1997, 0);
+		String[] makeArray = {"Lamborghini", "BMW", "Bugatti", "Aston Martin", "Audi", "Cadillac", "Chevrolet", "Ferarri", "Jaguar", "Hyundai"};
+		String[] colorArray = {"Yellow", "Red", "Blue", "Violet", "Indigo", "Green", "Orange", "Red", "Purple", "Black"};
+		
+		
+		// populating 10 objects of array cars
+		for (int i=0; i < cars.length; i++) {
+			if (i < 5) {
+				cars[i] = new Car(makeArray[r.nextInt(10)], colorArray[r.nextInt(10)], r.nextInt(6) + 2010, 0);
+			}
+			else cars[i] = new Car(makeArray[r.nextInt(10)], colorArray[r.nextInt(10)], r.nextInt(10) + 1997, 0);
+		}
 	
 	
-	for (int i = 0; i < 100; i++) {
-			int  a = r.nextInt(3) + 1;
-			cars[a] = cars[(int)Math.random() * cars.length]; // OR cars[i] = cars[r.nextInt(cars.length) + 1];
+	for (int i = 0; i < LIMIT; i++) {
+		
+		Car carR = cars[r.nextInt(10)]; 
+			
 			// randomize probability of choosing specific methods [out of 3]
 			int  b = r.nextInt(3) + 1;
 	
 			switch (b) {
-				case 1: cars[b].accelerate(); break;
-				case 2: cars[b].brake(); break;
-				case 3: cars[b].stop(); break;
+				case 1: carR.accelerate(); break;
+				case 2: carR.brake(); break;
+				case 3: carR.stop(); break;
 	    }
 	}
 	
@@ -44,7 +62,7 @@ public class Car_Worksheet_Question1 {
 	
 	for (int i = 0; i < cars.length; i++) {
 		
-		System.out.println("Car Number: " + i);
+		System.out.println("Car Number: " + (i+1));
 		System.out.println("Make: " + cars[i].getMake());
 		System.out.println("Color: " + cars[i].getColor());
 		System.out.println("Year: " + cars[i].getYear());
@@ -79,19 +97,18 @@ class Car {
 	void setSpeed(int newSpeed) {Speed = newSpeed;}	
 	
 	// specific methods
-	int accelerate() {
+	void accelerate() {
 		if (Year < 2010) {Speed += 15;}
 		if (Year >= 2010){Speed += 30;}
-		return Speed;
 	}
 	
-	int brake() {
+	void brake() {
 		if (Speed >= 0 && Year < 2010) {Speed -= 5;}
 		if (Speed >= 0 && Year >= 2010) {Speed -= 10;}
-		return Speed;
+		if (Speed < 0) {Speed = 0;}
 	}
 	
-	int stop(){
-		return Speed = 0;
+	void stop(){
+		Speed = 0;
 	}
 }

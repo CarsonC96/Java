@@ -21,9 +21,9 @@ public class RegularPolygon_9_9 {
 		 RegularPolygon p2 = new RegularPolygon(6, 4);
 		 RegularPolygon p3 = new RegularPolygon(10, 4, 5.6, 7.8);
 		 
-		 System.out.println("Perimeter of p1 is: " + p1.getPerimeter() + ". Area of p1 is: " + p1.getArea());
-		 System.out.println("Perimeter of p2 is: " + p2.getPerimeter() + ". Area of p2 is: " + p2.getArea());
-		 System.out.println("Perimeter of p3 is: " + p3.getPerimeter() + ". Area of p3 is: " + p3.getArea());
+		 System.out.println("Perimeter of p1 is: " + p1.getPerimeter() + "\nArea of p1 is: " + p1.getArea());
+		 System.out.println("\nPerimeter of p2 is: " + p2.getPerimeter() + "\nArea of p2 is: " + p2.getArea());
+		 System.out.println("\nPerimeter of p3 is: " + p3.getPerimeter() + "\nArea of p3 is: " + p3.getArea());
 	}
 }
 

@@ -32,16 +32,13 @@ public class AccountTest_9_7 {
 
         System.out.println("Account ID: " + account.getId());
         System.out.println("Account Balance: $" + account.getBalance());
-
-        System.out.println("Withdrawing $2,500...");
+        
         account.withdraw(2500);
-
-        System.out.println("Depositing $3,000...");
         account.deposit(3000);
 
         System.out.println("___________________________");
         System.out.println("Balance Statement: $" + account.getBalance());
-        System.out.println("Monthly Interest Rate: $" + account.getMonthlyInterest());
+        System.out.println("Monthly Interest: $" + account.getMonthlyInterest());
         System.out.println("Time of account creation: " + account.getDateCreated());
 
 	}
